@@ -61,7 +61,7 @@ let transporter = nodemailer.createTransport({
     from: '"Thandanani" <info@thandananir.org.za>', 
     to: req.body.Email, // list of receivers
 	bcc: 'andries.mokwatlo@thandananir.org.za',
-	bcc: 'madimetja.mokwatlo@thandananir.org.za',
+	bcc: 'thandananir@telkomsa.net',
 	bcc: 'info@thandananir.org.za',
     subject: 'QUERIES', 
     text: 'Hello', 
