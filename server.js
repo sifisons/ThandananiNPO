@@ -30,23 +30,23 @@ const output = `
 <ul>
     <li>Name: ${req.body.Name} </li>
     <li>Email: ${req.body.Email} </li>
-	<li>Subject: ${req.body.Subject} </li>
     <li>Message: ${req.body.Message} </li>
 </ul>
 <p>We will get back to you as soon as possible.</p>
 <p> Regards</p>
-ASLAN FACILITY MANAGEMENT (PTY)LTD TEAM
+<p> Thandanani Team</p>
+<img src="cid:thandanani_card@thandananir.org.za" alt="Thandanani Business Card Image" style="width:400px;height:300px;"/>
 `;
 
 
 let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: 'mail.thandananir.org.za',
     port: 465,
     secure: true, // use SSL
-    service: 'gmail',
+
     auth: {
-		// user: process.env.EMAIL, 
-        // pass:  process.env.PASSWORD
+		 //user: process.env.EMAIL, 
+         //pass:  process.env.PASSWORD
         user: process.env.APPSETTING_EMAIL, 
         pass: process.env.APPSETTING_PASSWORD
     },
@@ -58,11 +58,19 @@ let transporter = nodemailer.createTransport({
 // send mail with defined transport object
 //let info = await transporter.sendMail({
     let mailOptions = { 
-    from: '"ASLAN FACILITY MANAGEMENT" <aslanfacilitymanagement@gmail.com>', 
+    from: '"Thandanani" <info@thandananir.org.za>', 
     to: req.body.Email, // list of receivers
-	bcc: '',
-    subject: 'ENQUIRIES/COMPLAINS', 
-    html: output	
+	bcc: 'andries.mokwatlo@thandananir.org.za',
+	bcc: 'madimetja.mokwatlo@thandananir.org.za',
+	bcc: 'info@thandananir.org.za',
+    subject: 'QUERIES', 
+    text: 'Hello', 
+    html: output,
+    attachments: [{
+        filename: 'thandanani_card.png',
+        path: './public/images/thandanani_card.png',
+        cid: 'thandanani_card@thandananir.org.za' 
+    }]	
 };
 
 transporter.sendMail(mailOptions,(error,info)=>{
